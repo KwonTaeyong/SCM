@@ -1,0 +1,84 @@
+<style>
+</style>
+<div class="loader" id="orderlisttableloader" ></div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>scm주문상태</th>
+            <th>주문상태</th>
+            <th>상품명</th>
+            <th>옵션명</th>
+            <th>품목</th>
+            <th>총 수량</th>
+            <th>주문자 ID</th>
+            <th>주문자 이름</th>
+            <th>주문자 전화번호</th>
+            <th>주문자 휴대폰 번호</th>
+            <th>수취인 이름</th>
+            <th>수취인 전화번호</th>
+            <th>수취인 휴대폰 번호</th>
+            <th>우편번호</th>
+            <th>주소</th>
+            <th>몰 이름</th>
+            <th>사방넷 주문번호</th>
+            <th>몰 주문번호</th>
+            <th>몰 주문일자</th>
+            <th>몰 상품코드</th>
+            <th>배송방법</th>
+            <th>배송비</th>
+            <th>결제 금액</th>
+            <th>사방 수집 일자</th>
+            <th>주문 확인 일자</th>
+            <th>반품 완료 일자</th>
+            <th>교환 완료 일자</th>
+            <th>출고 완료 일자</th>
+            <th>취소 완료 일자</th>
+            <th>택배사 코드</th>
+            <th>송장 번호</th>
+            <th>송장 전송 결과</th>
+            <th>송장 전송일</th>
+            <th>배송메세지</th>
+            <th>배송희망일</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for order in order_list %}
+            <tr>
+                <td>{{ order.scm_status }}</td>
+                <td>{{ order.ORDER_STATUS }}</td>
+                <td>{{ order.PRODUCT_NAME }}</td>
+                <td>{{ order.SKU_VALUE }}</td>
+                <td>{{ order.P_EA }}</td>
+                <td>{{ order.USER_ID }}</td>
+                <td>{{ order.USER_NAME }}</td>
+                <td>{{ order.USER_TEL }}</td>
+                <td>{{ order.USER_CEL }}</td>
+                <td>{{ order.RECEIVE_NAME }}</td>
+                <td>{{ order.RECEIVE_TEL }}</td>
+                <td>{{ order.RECEIVE_CEL }}</td>
+                <td>{{ order.RECEIVE_ZIPCODE }}</td>
+                <td>{{ order.RECEIVE_ADDR }}</td>
+                <td>{{ order.MALL_ID }}</td>
+                <td>{{ order.IDX }}</td>
+                <td>{{ order.ORDER_ID }}</td>
+                <td>{{ order.ORDER_DATE }}</td>
+                <td>{{ order.MALL_PRODUCT_ID }}</td>
+                <td>{{ order.DELIVERY_METHOD_STR }}</td>
+                <td>{{ order.DELV_COST }}</td>
+                <td>{{ order.PAY_COST }}</td>
+                <td>{{ order.REG_DATE }}</td>
+                <td>{{ order.RTN_DT }}</td>
+                <td>{{ order.ORD_CONFIRM_DATE }}</td>
+                <td>{{ order.DELIVERY_CONFIRM_DATE }}</td>
+                <td>{{ order.CANCEL_DT }}</td>
+                <td>{{ order.DELIVERY_ID }}</td>
+                <td>{{ order.INVOICE_NO }}</td>
+                <td>{{ order.INV_SEND_MSG }}</td>
+                <td>{{ order.INV_SEND_DM }}</td>
+                <td>{{ order.DELV_MSG }}</td>
+                <td>{{ order.HOPE_DELV_DATE }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

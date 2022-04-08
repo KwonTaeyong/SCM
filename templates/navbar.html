@@ -1,0 +1,123 @@
+{% load static %}
+
+<style>
+    .nav-wrap {
+        background: #2a3954;
+        height: 70px;
+        line-height: 70px;
+        min-width: 884px;
+    }
+
+    .nav-wrap .logo {
+        float: left;
+        margin-left: 30px;
+    }
+
+    .nav-wrap .user {
+        float: right;
+        margin-right: 30px;
+    }
+
+    .nav-wrap .logo img {
+        width: 150px;
+        height: 55px;
+    }
+
+    .nav-wrap .logo img:last-child {
+        display: none;
+    }
+
+    .nav-wrap .logo:hover img:first-child {
+        display: none;
+    }
+
+    .nav-wrap .logo:hover img:last-child {
+        display: inline-block;
+    }
+
+    .nav-wrap .menu-bar {
+        float: left;
+    }
+
+    .nav-wrap .menu {
+        float: left;
+        list-style: none;
+    }
+
+    .nav-wrap .menubtn {
+        color: #ffffff;
+        padding: 0 13px;
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: -0.035em;
+        text-decoration-line: none;
+        display: list-item;
+    }
+
+    .nav-wrap .menu:hover {
+        background: #0086d1;
+    }
+
+    .nav-wrap .menu:hover .submenu {
+        display: inline-block;
+        position: absolute;
+    }
+
+    .nav-wrap .submenu {
+        background: #0086d1;
+        display: none;
+        padding-inline-start: 0;
+        width: 100%;
+    }
+
+
+    .nav-wrap .submenu .menubtn:hover {
+        text-decoration-line: underline;
+        color: #2a3954;
+    }
+
+</style>
+
+
+<nav class="nav-wrap">
+    <a class="logo" href="/">
+        <img src="{% static 'img/logo_off.svg' %}">
+        <img src="{% static 'img/logo_on.svg' %}">
+    </a>
+    <ul class="menu-bar">
+        <li class="menu">
+            <a class="menubtn" href="{% url 'B2C:order' %}">주문 관리</a>
+            <ul class="submenu">
+                <li class="menu">
+                    <a class="menubtn" href="{% url 'B2C:orderlist' %}">주문 조회</a>
+                </li>
+                <li class="menu">
+                    <a class="menubtn" href="">배송일지정 주문</a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu">
+            <a class="menubtn" href="{% url 'B2C:workorder' %}">작업지시 관리</a>
+            <ul class="submenu">
+                <li class="menu">
+                    <a class="menubtn" href="">작업지시(예정)</a>
+                </li>
+                <li class="menu">
+                    <a class="menubtn" href="">작업지시(확정)</a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu">
+            <a class="menubtn" href="{% url 'B2C:release' %}">출고리스트</a>
+        </li>
+        <li class="menu">
+            <a class="menubtn" href="{% url 'B2C:salesreport' %}">매체별 일별 매출</a>
+        </li>
+    </ul>
+    {% if user.is_authenticated %}
+        <a class="user" href="{% url 'common:logout' %}">{{ user.username }}
+            (로그아웃)</a>
+    {% else %}
+        <a class="user" href="{% url 'common:login' %}">로그인</a>
+    {% endif %}
+</nav>

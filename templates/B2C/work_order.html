@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid px-3">
+        <!-- header -->
+        <div class="row border bg-white mt-3 py-3">
+            <div style="text-align: center">
+                <h3>작업지시서 수동확정</h3>
+            </div>
+        </div>
+
+        <!-- 검색조건 -->
+        <div class="row mt-3 text-center">
+            <table class="table table-striped table-hover">
+                <colgroup>
+                    <col style="width:40px;">
+                    <col style="width:60px;">
+                    <col style="width:150px;">
+                    <col style="width:150px;">
+                    <col style="width:150px;">
+                    <col style="width:;">
+                    <col style="width:;" class="onlyPC">
+                    <col style="width:;" class="onlyPC">
+                    <col style="width:;" class="onlyPC">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th><input type="checkbox" id="allCheck" alt="전체 선택"><label for="allCheck"></label></th>
+                    <th>No</th>
+                    <th>주문자</th>
+                    <th>받는분</th>
+                    <th>카테고리</th>
+                    <th>품목</th>
+                    <th class="onlyPC">구성품</th>
+                    <th class="onlyPC">증정</th>
+                    <th class="onlyPC">쇼핑몰명</th>
+                </tr>
+                </thead>
+                <tbody id="orderListBody">
+                {% for order in orderlist %}
+                    <tr class="top">
+                        <td><input type="checkbox" id="o_1" class="checkBtn"><label for="o_1"></label></td>
+                        <td rowspan="1">1</td>
+                        <td rowspan="1">{{ order.USER_NAME }}</td>
+                        <td rowspan="1">{{ order.RECEIVE_NAME }}</td>
+                        <td class="greenHilight">{{ order.카테고리 }}</td>
+                        <td class="greenHilight">{{ order.품목 }}</td>
+                        <td class="greenHilight onlyPC">{{ order.구성품 }}</td>
+                        <td class="greenHilight onlyPC">{{ order.증정 }}</td>
+                        <td class="greenHilight onlyPC">{{ order.MALL_ID }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+{% endblock %}
